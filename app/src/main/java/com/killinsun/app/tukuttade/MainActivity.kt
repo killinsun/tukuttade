@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         fab_add.setOnClickListener{
             Toast.makeText(this,"FAB Clicked!", Toast.LENGTH_LONG).show()
 
-            val intent = Intent(this, AddItemActivity::class.java)
+            val intent = Intent(this, NewPostActivity::class.java)
             startActivity(intent)
         }
 
