@@ -8,6 +8,9 @@ import android.widget.Spinner
 
 class NewPostViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+    interface NewPostInterface{
+        fun onClickCameraButton(position: Int)
+    }
     // 最後の行以外の場合はこっちを読み込む。　
     val edtTitleName: EditText? = view.findViewById(R.id.edtName)
     val spiExpiration: Spinner? = view.findViewById(R.id.spiExpiration)

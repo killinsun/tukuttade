@@ -1,5 +1,6 @@
 package com.killinsun.app.tukuttade
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.layout_new_item_card.view.*
 
-class NewPostAdapter(private val itemList:Array<Int>)
+class NewPostAdapter(private val itemList:ArrayList<Int>, private val listener: NewPostViewHolder.NewPostInterface)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private val expirationArray = arrayOf("今日中","三日後","一週間後")
@@ -38,25 +39,17 @@ class NewPostAdapter(private val itemList:Array<Int>)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(position == itemList.size){
-            /*
-            holder.ibtnItemAdd.setOnClickListener{
+            val myHolder: NewItemViewHolder = holder as NewItemViewHolder
+            myHolder.ibtnItemAdd.setOnClickListener{
                 Log.v("test","Add button clicked!!!")
+                itemList.add(position+1)
+                notifyItemInserted(position + 1)
             }
-            */
         }else {
-            /*
-            holder.ibtnCamera.setOnClickListener {
-                Log.v("test", "Camera button clicked!!!")
-            }
-            */
+            val myHolder: NewPostViewHolder = holder as NewPostViewHolder
+            myHolder.ibtnCamera?.setOnClickListener { listener.onClickCameraButton(position) }
         }
 
-    }
-
-
-    // カメラボタンを押した時の処理
-    fun selectItemImage(){
-        Log.v("test", "log_test")
     }
 
     override fun getItemCount(): Int{
