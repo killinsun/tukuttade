@@ -1,7 +1,6 @@
 package com.killinsun.app.tukuttade
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +8,14 @@ import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.layout_new_item_card.view.*
 
 class NewPostAdapter(
-    private val listItems:ArrayList<Int>,
+    private val listItems:ArrayList<Okazu>,
     private val cardListener: NewPostViewHolder.NewPostInterface,
     private val addListener: NewItemViewHolder.NewItemInterface)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    private val expirationArray = arrayOf("今日中","三日後","一週間後")
+    private val expirationArray = arrayOf("今日中","３日以内","１周間以内")
 
     override fun getItemViewType(position: Int) : Int{
-        Log.v("test","!!!!!:  $listItems.size")
         return if(position == listItems.size) 0 else 1
     }
 
