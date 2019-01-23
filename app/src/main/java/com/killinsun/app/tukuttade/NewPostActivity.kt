@@ -12,10 +12,13 @@ import kotlinx.android.synthetic.main.activity_new_post.*
 
 class NewPostActivity : AppCompatActivity(), NewPostViewHolder.NewPostInterface, NewItemViewHolder.NewItemInterface{
 
+    lateinit private var tsukuDB : DbAdapter
     private var listItems: ArrayList<Okazu> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
+
+        tsukuDB = DbAdapter(this)
         setContentView(R.layout.activity_new_post)
 
         val okazu:Okazu = Okazu("",0,null)
@@ -66,6 +69,8 @@ class NewPostActivity : AppCompatActivity(), NewPostViewHolder.NewPostInterface,
             listItems[count].ttl = holder.spiExpiration!!.selectedItemPosition
             listItems[count].imgBm = bitmap
             listItems[count].printMyStatus()
+
+            tsukuDB.addRecord(listItems[count])
 
         }
     }
