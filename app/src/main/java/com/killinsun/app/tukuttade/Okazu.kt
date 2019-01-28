@@ -4,12 +4,12 @@ import android.graphics.Bitmap
 import android.util.Log
 import java.util.*
 
-class Okazu(okazuName:String, ttl:Int, okazuBitmap: Bitmap?) {
+class Okazu(okazuName:String, ttl:Int?, date: Date?, imgByte: ByteArray?) {
 
     var name:String
-    var ttl:Int
-    var imgBm: Bitmap?
-    var date: Date
+    var ttl:Int?
+    var imgByte: ByteArray?
+    var date: Date?
 
     val mapExpir:Map<Int, Int> = mapOf(
         0 to 0, //index:0 今日中
@@ -21,21 +21,26 @@ class Okazu(okazuName:String, ttl:Int, okazuBitmap: Bitmap?) {
     init{
         this.name = okazuName
         this.ttl  = ttl
-        this.imgBm = okazuBitmap
-        date = Date()
+        this.imgByte = imgByte
 
-        // Set expirnation date.
-        val cl:Calendar = Calendar.getInstance()
-        cl.setTime(date)
-        cl.add(Calendar.DAY_OF_MONTH, mapExpir.get(ttl)!!)
+        if(date == null) {
+            this.date = Date()
 
-        date = cl.time
+            // Set expirnation date.
+            val cl:Calendar = Calendar.getInstance()
+            cl.setTime(this.date)
+            cl.add(Calendar.DAY_OF_MONTH, mapExpir.get(ttl)!!)
+
+            this.date = cl.time
+        }else{
+            this.date = date
+        }
+
 
     }
 
     fun printMyStatus(){
-        Log.v("test", "Name: ${this.name}, Expir: ${date}, URI: ${this.imgBm}")
+        Log.v("test", "Name: ${this.name}, Expir: ${date}, URI: ${this.imgByte}")
     }
-
 
 }

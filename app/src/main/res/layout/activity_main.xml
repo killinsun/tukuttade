@@ -17,6 +17,10 @@
             android:layout_marginRight="16dp"
             android:src="@drawable/baseline_add_white_24"
             app:fabSize="normal"/>
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/top_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

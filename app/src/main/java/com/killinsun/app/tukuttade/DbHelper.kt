@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 
 val DB_NAME:String = "tsukuttade"
-val DB_VERSION:Int = 1 //自分でつけるバージョン。構造が変わったら上げる
+val DB_VERSION:Int = 2 //自分でつけるバージョン。構造が変わったら上げる
 val DB_TABLE_NAME:String = "okazu_table"
 
 class DbHelper (var mContext: Context?): SQLiteOpenHelper(mContext, DB_NAME, null, DB_VERSION){
@@ -15,9 +15,9 @@ class DbHelper (var mContext: Context?): SQLiteOpenHelper(mContext, DB_NAME, nul
         db?.execSQL(
             "CREATE TABLE " + DB_TABLE_NAME + " ( " +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "name text not null, " +
-                    "date date not null, " +
-                    "bitmap text " +
+                    "name TEXT NOT NULL, " +
+                    "date INTEGER NOT NULL, " +
+                    "image BLOB" +
                     ");"
         )
     }

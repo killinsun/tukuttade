@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_new_post.*
+import java.io.ByteArrayOutputStream
 
 class NewPostActivity : AppCompatActivity(), NewPostViewHolder.NewPostInterface, NewItemViewHolder.NewItemInterface{
 
@@ -21,7 +22,7 @@ class NewPostActivity : AppCompatActivity(), NewPostViewHolder.NewPostInterface,
         tsukuDB = DbAdapter(this)
         setContentView(R.layout.activity_new_post)
 
-        val okazu:Okazu = Okazu("",0,null)
+        val okazu:Okazu = Okazu("",0,null, null)
         listItems.add(okazu)
 
         addRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -42,7 +43,7 @@ class NewPostActivity : AppCompatActivity(), NewPostViewHolder.NewPostInterface,
 
     //プラスボタン押されたらOkazuインスタンス生成してリスト追加
     override fun onClickAddButton() {
-        val okazu:Okazu = Okazu("",0,null)
+        val okazu:Okazu = Okazu("",0,null, null)
         listItems.add(okazu)
     }
 
@@ -65,9 +66,14 @@ class NewPostActivity : AppCompatActivity(), NewPostViewHolder.NewPostInterface,
             val drawable:BitmapDrawable = holder.ibtnCamera?.drawable as BitmapDrawable
             val bitmap: Bitmap = drawable.bitmap
 
+            //Byte型に変換する
+            val bos: ByteArrayOutputStream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG,100, bos)
+            val imgByte = bos.toByteArray()
+
             listItems[count].name = holder.edtTitleName?.text.toString()
             listItems[count].ttl = holder.spiExpiration!!.selectedItemPosition
-            listItems[count].imgBm = bitmap
+            listItems[count].imgByte = imgByte
             listItems[count].printMyStatus()
 
             tsukuDB.addRecord(listItems[count])
