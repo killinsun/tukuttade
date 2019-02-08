@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "833173971707",
+    "firebase_url": "https://tukuttade.firebaseio.com",
+    "project_id": "tukuttade",
+    "storage_bucket": "tukuttade.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833173971707:android:5bafd1525a8e3695",
+        "android_client_info": {
+          "package_name": "com.killinsun.app.tukuttade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833173971707-k6hrt8l7glsnj89j444fet56tcdd5kt4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.killinsun.app.tukuttade",
+            "certificate_hash": "c1ae130fd2c026e14baed30a33acfb5d16434e69"
+          }
+        },
+        {
+          "client_id": "833173971707-63gclbord2q27rfbvv35tvgiu670klqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0vBm0uefujCYrBSINWbQruJchau0q6DE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833173971707-63gclbord2q27rfbvv35tvgiu670klqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,16 +1,17 @@
 package com.killinsun.app.tukuttade
 
-import android.graphics.Bitmap
 import android.util.Log
+import me.mattak.moment.Moment
+import me.mattak.moment.TimeUnit
 import java.util.*
+import java.util.Calendar.DATE
 
 class Okazu(okazuName:String, ttl:Int?, date: Date?, imgByte: ByteArray?) {
 
     var name:String
     var ttl:Int?
     var imgByte: ByteArray?
-    var date: Date?
-
+    var expireDate: Date
     val mapExpir:Map<Int, Int> = mapOf(
         0 to 0, //index:0 今日中
         1 to 3, //index:1 三日後
@@ -23,24 +24,26 @@ class Okazu(okazuName:String, ttl:Int?, date: Date?, imgByte: ByteArray?) {
         this.ttl  = ttl
         this.imgByte = imgByte
 
-        if(date == null) {
-            this.date = Date()
-
-            // Set expirnation date.
-            val cl:Calendar = Calendar.getInstance()
-            cl.setTime(this.date)
-            cl.add(Calendar.DAY_OF_MONTH, mapExpir.get(ttl)!!)
-
-            this.date = cl.time
-        }else{
-            this.date = date
+        val baseDate = Date()
+        //dateがNullの場合はTTL値から何日後かを導く
+        if(date == null && ttl != null) {
+            Log.v("test","Calc start!")
+            this.expireDate = calcDateFromTtl(baseDate, ttl)
+        }else if(date != null){
+            this.expireDate = date
+        }else {
+            this.expireDate = baseDate
         }
 
-
     }
 
-    fun printMyStatus(){
-        Log.v("test", "Name: ${this.name}, Expir: ${date}, URI: ${this.imgByte}")
-    }
+    fun calcDateFromTtl(baseDate: Date, ttl: Int): Date{
 
+        val cl:Calendar = Calendar.getInstance()
+        cl.setTime(baseDate)
+        cl.add(DATE, mapExpir.get(ttl)!!)
+        Log.v("test", "TTL: ${ttl}, mapExpire:${mapExpir.get(ttl)}")
+        return cl.getTime()
+
+    }
 }

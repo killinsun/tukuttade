@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">tukuttade</string>
+    <string name="m_default_web_client_id" translatable="false">833173971707-63gclbord2q27rfbvv35tvgiu670klqd.apps.googleusercontent.com</string>
 </resources>

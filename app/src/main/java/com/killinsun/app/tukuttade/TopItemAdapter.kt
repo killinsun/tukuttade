@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import java.io.ByteArrayInputStream
 
 class TopItemAdapter(private val listItems:ArrayList<Okazu>,
                      private val ItemListener: TopItemViewHolder.ItemInterface)
@@ -23,15 +24,12 @@ class TopItemAdapter(private val listItems:ArrayList<Okazu>,
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
        val myHolder: TopItemViewHolder = holder as TopItemViewHolder
 
-        myHolder.ibtnItem.setOnClickListener{
-           ItemListener.onClickItem(position)
-        }
+        val bis = ByteArrayInputStream(listItems[position].imgByte)
+        myHolder.ibtnItem.setImageDrawable(BitmapDrawable(myHolder.ibtnItem.resources, bis))
 
-        //TODO: imgByte!! の部分どうにかする
-        val bmp: Bitmap = BitmapFactory.decodeByteArray(
-            listItems[position].imgByte, 0, listItems[position].imgByte!!.size
-        )
-        myHolder.ibtnItem.setImageDrawable(BitmapDrawable(bmp))
+        myHolder.ibtnItem.setOnClickListener{
+            ItemListener.onClickItem(position)
+        }
     }
 
     override fun getItemCount(): Int{
