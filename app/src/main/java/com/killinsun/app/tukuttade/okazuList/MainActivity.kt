@@ -1,14 +1,10 @@
-package com.killinsun.app.tukuttade
+package com.killinsun.app.tukuttade.okazuList
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.widget.GridLayout
 import android.widget.Toast
-import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -17,7 +13,10 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_main.*
+import com.killinsun.app.tukuttade.okazuAddEdit.NewPostActivity
+import com.killinsun.app.tukuttade.R
+import com.killinsun.app.tukuttade.data.Okazu
+import kotlinx.android.synthetic.main.act_main.*
 
 class MainActivity : AppCompatActivity(), TopItemViewHolder.ItemInterface {
 
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity(), TopItemViewHolder.ItemInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.act_main)
         FirebaseApp.initializeApp(this)
         FirebaseFirestore.setLoggingEnabled(true)
 

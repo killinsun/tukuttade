@@ -1,22 +1,25 @@
-package com.killinsun.app.tukuttade
+package com.killinsun.app.tukuttade.okazuAddEdit
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import com.killinsun.app.tukuttade.R
+import com.killinsun.app.tukuttade.data.Okazu
 import kotlinx.android.synthetic.main.layout_new_item_card.view.*
 
 class NewPostAdapter(
-    private val listItems:ArrayList<Okazu>,
-    private val cardListener: NewPostViewHolder.NewPostInterface,
-    private val addListener: NewItemViewHolder.NewItemInterface)
+    private val okazuArray:ArrayList<Okazu>,
+    private val newPostListener: NewPostViewHolder.NewPostInterface,
+    private val newItemListener: NewItemViewHolder.NewItemInterface
+)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private val expirationArray = arrayOf("今日中","３日以内","１周間以内")
 
     override fun getItemViewType(position: Int) : Int{
-        return if(position == listItems.size) 0 else 1
+        return if(position == okazuArray.size) 0 else 1
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -38,23 +41,24 @@ class NewPostAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(position == listItems.size){
+        if(position == okazuArray.size){
             val myHolder: NewItemViewHolder = holder as NewItemViewHolder
+
             myHolder.ibtnItemAdd.setOnClickListener{
-                addListener.onClickAddButton()
+                newItemListener.onClickAddButton()
                 notifyItemInserted(position + 1)
             }
         }else {
             val myHolder: NewPostViewHolder = holder as NewPostViewHolder
             myHolder.ibtnCamera?.setOnClickListener {
-                cardListener.onClickCameraButton(position)
+                newPostListener.onClickCameraButton(position)
             }
         }
 
     }
 
     override fun getItemCount(): Int{
-        return listItems.size + 1
+        return okazuArray.size + 1
     }
 
 }

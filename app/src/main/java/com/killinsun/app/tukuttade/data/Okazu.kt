@@ -1,13 +1,12 @@
-package com.killinsun.app.tukuttade
+package com.killinsun.app.tukuttade.data
 
 import android.util.Log
-import me.mattak.moment.Moment
-import me.mattak.moment.TimeUnit
 import java.util.*
 import java.util.Calendar.DATE
 
 class Okazu(okazuName:String, ttl:Int?, date: Date?, imgByte: ByteArray?) {
 
+    val id:String
     var name:String
     var ttl:Int?
     var imgByte: ByteArray?
@@ -20,6 +19,7 @@ class Okazu(okazuName:String, ttl:Int?, date: Date?, imgByte: ByteArray?) {
 
 
     init{
+        this.id = "not initialized"
         this.name = okazuName
         this.ttl  = ttl
         this.imgByte = imgByte

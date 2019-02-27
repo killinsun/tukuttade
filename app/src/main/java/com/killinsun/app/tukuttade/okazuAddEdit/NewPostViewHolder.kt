@@ -1,10 +1,11 @@
-package com.killinsun.app.tukuttade
+package com.killinsun.app.tukuttade.okazuAddEdit
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Spinner
+import com.killinsun.app.tukuttade.R
 
 class NewPostViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

@@ -1,16 +1,17 @@
-package com.killinsun.app.tukuttade
+package com.killinsun.app.tukuttade.okazuList
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.killinsun.app.tukuttade.R
+import com.killinsun.app.tukuttade.data.Okazu
 import java.io.ByteArrayInputStream
 
 class TopItemAdapter(private val listItems:ArrayList<Okazu>,
-                     private val ItemListener: TopItemViewHolder.ItemInterface)
+                     private val ItemListener: TopItemViewHolder.ItemInterface
+)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder{

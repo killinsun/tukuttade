@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.killinsun.app.tukuttade.MainActivity">
+        tools:context="com.killinsun.app.tukuttade.okazuList.MainActivity">
 
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_add"
